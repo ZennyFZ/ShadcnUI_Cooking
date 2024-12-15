@@ -1,0 +1,1 @@
+export const ENDPOINT = process.env.BACKEND_URL
