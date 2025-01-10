@@ -14,5 +14,7 @@ export interface ProductInterface {
 
 export interface CategoryInterface {
     _id: string,
-    name: string
+    name: string,
+    image: string,
+    parentCategory: string
 }

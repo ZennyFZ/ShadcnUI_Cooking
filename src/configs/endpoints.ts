@@ -1,1 +1,1 @@
-export const ENDPOINT = process.env.BACKEND_URL
+export const ENDPOINT = process.env.BACKEND_URL;
