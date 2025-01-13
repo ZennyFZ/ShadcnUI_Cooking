@@ -1,1 +1,1 @@
-export const ENDPOINT = process.env.BACKEND_URL;
+export const ENDPOINT = process.env.NEXT_PUBLIC_ENDPOINT_BACKEND_URL;

@@ -5,6 +5,7 @@ import axios, {
   AxiosResponse,
   InternalAxiosRequestConfig,
 } from "axios";
+import { refreshToken } from "./auth.api";
 
 export enum APIRouteType {
   Auth = "auth",
@@ -20,12 +21,17 @@ export interface InterceptorConfig {
   withCredentials?: boolean;
 }
 
-const handleUnauthorize = () => {};
+const handleUnauthorize = (message: string) => {
+  if (message === "Credential expired, please login again") {
+    window.location.replace("/login");
+  }
+  refreshToken();
+};
 
 const handleError = (error: AxiosError) => {
   switch (error.response?.status) {
     case 401:
-      handleUnauthorize();
+      handleUnauthorize(error.response.data as string);
       break;
     default:
       console.error({
@@ -40,7 +46,9 @@ export const APIClient = (
 ): AxiosInstance => {
   const instance: AxiosInstance = axios.create({
     baseURL: `${
-      interceptorConfig.baseURL ? interceptorConfig.baseURL : ENDPOINT
+      interceptorConfig.baseURL
+        ? `${interceptorConfig.baseURL}/${interceptorConfig.route}`
+        : ENDPOINT
     }/${interceptorConfig.route}`,
     headers: {
       ...(interceptorConfig.defaultHeaders || {}),
