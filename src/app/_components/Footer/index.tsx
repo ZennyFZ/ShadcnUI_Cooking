@@ -23,7 +23,7 @@ export const Footer = () => {
   ];
 
   return (
-    <div className="flex items-center justify-between gap-4 bg-primary text-sm p-4">
+    <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-sm p-4">
       <div className="flex flex-col gap-2 font-semibold">
         <div className="capitalize text-base">Về Sốp</div>
         <div className="flex text-sm flex-col gap-2">

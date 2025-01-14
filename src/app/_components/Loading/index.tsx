@@ -16,9 +16,7 @@ export const Loading = (props: LoadingProps) => {
     props;
 
   return (
-    <div
-      className={`flex justify-center items-center text-black ${containerCSS}`}
-    >
+    <div className={`flex justify-center items-center ${containerCSS}`}>
       <Image
         unoptimized
         src={src ?? ""}

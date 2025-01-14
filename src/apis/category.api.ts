@@ -12,11 +12,15 @@ const authorizedApiClient = APIClient({
 });
 
 export const GetCategories = () => {
-  return apiClient.get("/");
+  return apiClient.get<CategoryInterface[]>("/");
+};
+
+export const GetCategoriesByParentCategory = (id: string) => {
+  return apiClient.get<CategoryInterface[]>(`/${id}`);
 };
 
 export const GetCategoryById = (id: string) => {
-  return apiClient.get(`/${id}`);
+  return apiClient.get<CategoryInterface>(`/${id}`);
 };
 
 export const AddCategory = (categoryData: CategoryInterface) => {
