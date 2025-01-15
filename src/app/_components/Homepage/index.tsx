@@ -5,7 +5,6 @@ import { CategoryInterface } from "@/types";
 import { useQuery } from "@tanstack/react-query";
 import Image from "next/image";
 import { useCallback } from "react";
-import { ArrowRight } from "lucide-react";
 import { Loading } from "../Loading";
 
 export const Homepage = () => {
@@ -69,25 +68,24 @@ export const Homepage = () => {
   }
 
   return (
-    <div className="flex flex-col items-center min-h-screen p-28">
-      <div className="flex rounded-lg p-4 w-full">
-        <div className="flex flex-col gap-4 w-1/3">
-          <div className="text-4xl font-bold">Gacha Games</div>
-          <div className="text-lg">
+    <div className="flex flex-col items-center min-h-screen p-0 font-semibold gap-4  laptop:join-[p-4]">
+      <div className="flex flex-col gap-4 laptop:join-[flex-row]">
+        <div className="flex flex-col gap-2 w-full laptop:join-[w-1/3]">
+          <div className="text-2xl">Gacha Games</div>
+          <div className="text-base">
             Nạp qua UID hoặc cung cấp thông tin tài khoản
           </div>
           <div className="flex flex-row items-center gap-2 cursor-pointer hover:opacity-80">
-            <span className="font-bold">Xem thêm</span>
-            <ArrowRight size={20} />
+            <span className="text-sm border p-2 rounded-lg">Xem thêm</span>
           </div>
         </div>
-        <div className="grid grid-cols-5 gap-4">
+        <div className="grid grid-cols-2 gap-4 w-full laptop:join-[grid-cols-5]">
           {homepageFilteredData()
             .gachaCategoryData?.slice(0, 10)
             .map((category: CategoryInterface) => (
               <div
                 key={category._id}
-                className="flex flex-col rounded-lg p-4 gap-4 cursor-pointer"
+                className="flex flex-col gap-4 cursor-pointer laptop:join-[p-2]"
               >
                 <Image
                   src={category.imageUrl}
@@ -96,107 +94,100 @@ export const Homepage = () => {
                   height={200}
                   className="rounded-lg"
                 />
-                <div className="font-bold">{category.name}</div>
+                <div>{category.name}</div>
               </div>
             ))}
         </div>
       </div>
 
-      {/* <div className="flex rounded-lg p-4 w-full">
-          <div className="flex flex-col gap-4 w-1/3">
-            <div className="text-4xl font-bold">Steam</div>
-            <div className="text-lg mt-4">
-              Key game, gift game, wallet, steam Items
-            </div>
-            <div className="flex flex-row items-center gap-2 cursor-pointer hover:opacity-80">
-              <span className="font-bold">Xem thêm</span>
-              <ArrowRight size={20} />
-            </div>
+      <div className="flex flex-col gap-4 laptop:join-[flex-row]">
+        <div className="flex flex-col gap-2 w-full laptop:join-[w-1/3]">
+          <div className="text-2xl">Steam</div>
+          <div className="text-base">
+            Key game, gift game, wallet, steam Items
           </div>
-          <div className="grid grid-cols-5 gap-4 md:grid-cols-2">
-            {homepageFilteredData()
-              .gachaCategoryData?.slice(0, 10)
-              .map((category: CategoryInterface) => (
-                <div
-                  key={category._id}
-                  className="flex flex-col rounded-lg p-4 gap-4 cursor-pointer"
-                >
-                  <Image
-                    src={category.imageUrl}
-                    alt={category.name}
-                    width={200}
-                    height={200}
-                    className="rounded-lg"
-                  />
-                  <div className="font-bold">{category.name}</div>
-                </div>
-              ))}
+          <div className="flex flex-row items-center gap-2 cursor-pointer hover:opacity-80">
+            <span className="text-sm border p-2 rounded-lg">Xem thêm</span>
           </div>
         </div>
-
-        <div className="flex rounded-lg p-4 w-full">
-          <div className="flex flex-col gap-4 w-1/3">
-            <div className="text-4xl font-bold">Phần Mềm</div>
-            <div className="text-lg mt-4">
-              VPN, Diệt virus, Tiện ích, Phần mềm bản quyền
-            </div>
-            <div className="flex flex-row items-center gap-2 cursor-pointer hover:opacity-80">
-              <span className="font-bold">Xem thêm</span>
-              <ArrowRight size={20} />
-            </div>
+        <div className="grid grid-cols-2 gap-4 w-full laptop:join-[grid-cols-5]">
+          {homepageFilteredData()
+            .gachaCategoryData?.slice(0, 10)
+            .map((category: CategoryInterface) => (
+              <div
+                key={category._id}
+                className="flex flex-col gap-4 cursor-pointer laptop:join-[p-2]"
+              >
+                <Image
+                  src={category.imageUrl}
+                  alt={category.name}
+                  width={200}
+                  height={200}
+                  className="rounded-lg"
+                />
+                <div>{category.name}</div>
+              </div>
+            ))}
+        </div>
+      </div>
+      <div className="flex flex-col gap-4 laptop:join-[flex-row]">
+        <div className="flex flex-col gap-2 w-full laptop:join-[w-1/3]">
+          <div className="text-2xl">Phần mềm</div>
+          <div className="text-base">
+            VPN, Diệt virus, Tiện ích, Phần mềm bản quyền
           </div>
-          <div className="grid grid-cols-5 gap-4">
-            {homepageFilteredData()
-              .softwareCategoryData?.slice(0, 10)
-              .map((category: CategoryInterface) => (
-                <div
-                  key={category._id}
-                  className="flex flex-col rounded-lg p-4 gap-4 cursor-pointer"
-                >
-                  <Image
-                    src={category.imageUrl}
-                    alt={category.name}
-                    width={200}
-                    height={200}
-                    className="rounded-lg"
-                  />
-                  <div className="font-bold">{category.name}</div>
-                </div>
-              ))}
+          <div className="flex flex-row items-center gap-2 cursor-pointer hover:opacity-80">
+            <span className="text-sm border p-2 rounded-lg">Xem thêm</span>
           </div>
         </div>
-
-        <div className="flex rounded-lg p-4 w-full">
-          <div className="flex flex-col gap-4 w-1/3">
-            <div className="text-4xl font-bold">Tài Khoản</div>
-            <div className="text-lg mt-4">
-              Giải trí, học tập, thiết kế, code, AI
-            </div>
-            <div className="flex flex-row items-center gap-2 cursor-pointer hover:opacity-80">
-              <span className="font-bold">Xem thêm</span>
-              <ArrowRight size={20} />
-            </div>
+        <div className="grid grid-cols-2 gap-4 w-full laptop:join-[grid-cols-5]">
+          {homepageFilteredData()
+            .softwareCategoryData?.slice(0, 10)
+            .map((category: CategoryInterface) => (
+              <div
+                key={category._id}
+                className="flex flex-col gap-4 cursor-pointer laptop:join-[p-2]"
+              >
+                <Image
+                  src={category.imageUrl}
+                  alt={category.name}
+                  width={200}
+                  height={200}
+                  className="rounded-lg"
+                />
+                <div>{category.name}</div>
+              </div>
+            ))}
+        </div>
+      </div>
+      <div className="flex flex-col gap-4 laptop:join-[flex-row]">
+        <div className="flex flex-col gap-2 w-full laptop:join-[w-1/3]">
+          <div className="text-2xl">Tài Khoản</div>
+          <div className="text-base">Giải trí, học tập, thiết kế, code, AI</div>
+          <div className="flex flex-row items-center gap-2 cursor-pointer hover:opacity-80">
+            <span className="text-sm border p-2 rounded-lg">Xem thêm</span>
           </div>
-          <div className="grid grid-cols-5 gap-4">
-            {homepageFilteredData()
-              .accountCategoryData?.slice(0, 10)
-              .map((category: CategoryInterface) => (
-                <div
-                  key={category._id}
-                  className="flex flex-col rounded-lg p-4 gap-4 cursor-pointer"
-                >
-                  <Image
-                    src={category.imageUrl}
-                    alt={category.name}
-                    width={200}
-                    height={200}
-                    className="rounded-lg"
-                  />
-                  <div className="font-bold">{category.name}</div>
-                </div>
-              ))}
-          </div>
-        </div> */}
+        </div>
+        <div className="grid grid-cols-2 gap-4 w-full laptop:join-[grid-cols-5]">
+          {homepageFilteredData()
+            .accountCategoryData?.slice(0, 10)
+            .map((category: CategoryInterface) => (
+              <div
+                key={category._id}
+                className="flex flex-col gap-4 cursor-pointer laptop:join-[p-2]"
+              >
+                <Image
+                  src={category.imageUrl}
+                  alt={category.name}
+                  width={200}
+                  height={200}
+                  className="rounded-lg"
+                />
+                <div>{category.name}</div>
+              </div>
+            ))}
+        </div>
+      </div>
     </div>
   );
 };

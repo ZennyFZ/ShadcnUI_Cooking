@@ -4,3 +4,4 @@ export * from "./Homepage";
 export * from "./Input";
 export * from "./Button";
 export * from "./Loading";
+export * from "./Separator";

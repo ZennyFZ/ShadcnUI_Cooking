@@ -27,6 +27,20 @@ export default {
         bermuda: "#78dcca",
       },
     },
+    screens: {
+      tablet: "640px",
+      laptop: "1024px",
+      desktop: "1280px",
+    },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [
+    require("tailwindcss-animate"),
+    require("tailwindcss/plugin")(({ matchUtilities }) => {
+      matchUtilities({
+        join: (value) => ({
+          [`@apply ${value.replaceAll(",", " ")}`]: {},
+        }),
+      });
+    }),
+  ],
 } satisfies Config;
